@@ -1,0 +1,15 @@
+{% set lookup = salt['grains.filter_by'](
+  {
+    'FreeBSD': {
+      'pkgs': [
+        'consul',
+        'ca_root_nss',
+      ],
+      'service': 'consul',
+      'config_dir': '/usr/local/etc/consul.d'
+    },
+  },
+  grain='os_family',
+  merge=salt['pillar.get']('consul:lookup'),
+  default='unset'
+) %}

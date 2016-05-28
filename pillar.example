@@ -1,0 +1,5 @@
+consul:
+  datacenter: 'test.datacenter'
+  bind_addr: '10.0.0.1'
+  start_join:
+    - '10.0.0.1'
