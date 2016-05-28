@@ -34,9 +34,10 @@ load_rc_config $name
 : ${consul_env:=""}
 
 pidfile=/var/run/consul.pid
-procname="/usr/local/bin/consul"
 command="/usr/sbin/daemon"
-command_args="-r -f -p ${pidfile} /usr/bin/env ${consul_env} ${procname} agent -data-dir=${consul_dir} -ui-dir=/usr/local/share/consul -config-dir=/usr/local/etc/consul.d ${consul_args}"
+procname="${command}"
+actual_command="/usr/local/bin/${name}"
+command_args="-r -f -P ${pidfile} /usr/bin/env ${consul_env} ${actual_command} agent -data-dir=${consul_dir} -ui-dir=/usr/local/share/consul -config-dir=/usr/local/etc/consul.d ${consul_args}"
 
 start_precmd=consul_startprecmd
 
