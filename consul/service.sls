@@ -8,3 +8,4 @@ consul.service:
       - pkg: 'consul.pkgs'
     - watch:
       - file: 'consul.config'
+      - file: '{{ salt['file.join'](lookup.config_dir, '*') }}'
